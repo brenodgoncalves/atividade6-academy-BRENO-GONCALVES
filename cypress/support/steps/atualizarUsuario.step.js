@@ -2,7 +2,7 @@ import{ pageUsers } from "../../support/pages/pageUsers.po"
 import{ pageDetalhes } from "../../support/pages/pageDetalhes.po"
 
 //Background: Acessar cadastro de novo usuário
-Given("acessei a aplicação", ()=>{
+Given("acessei a aplicação", ()=>{       
     pageUsers.visitar()
 });
 
@@ -12,7 +12,7 @@ When("pesquisei por um usuário pelo seu email", (tabela) =>{
     pageUsers.buscarUsuarioEmail(dadosTabela.email)
 });
 
-And("acesso o detalhes do usuário pesquisado", () =>{
+When("acesso o detalhes do usuário pesquisado", () =>{
     pageUsers.acessoDetalhes()
 });
 

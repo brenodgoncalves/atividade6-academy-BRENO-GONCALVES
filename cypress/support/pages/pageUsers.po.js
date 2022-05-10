@@ -7,6 +7,11 @@ class PageUsers{
     
     visitar(){
         cy.visit("https://academy-crud-frontend.herokuapp.com/");
+        cy.intercept("GET","https://crud-api-academy.herokuapp.com/api/v1/users",{
+            statusCode: 200,
+            fixtures: "usuarios.json"
+        });
+        
     }
 
     buscarUsuarioEmail(email) {

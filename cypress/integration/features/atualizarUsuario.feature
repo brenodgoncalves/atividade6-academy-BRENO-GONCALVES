@@ -9,12 +9,12 @@ Feature: Atualizar um usuário
     Scenario: Localizando usuário pelo email
         When pesquisei por um usuário pelo seu email
         |email |breno@teste.gov |
-        And acesso o detalhes do usuário pesquisado
+        When acesso o detalhes do usuário pesquisado
         Then visualizo todas as suas informações
 
     Scenario: Usuário inexistente
         When pesquisei por um usuário pelo seu nome
-        |nome  |teste breno inexistente|
+        |nome  |teste breno inexistente |
         Then visualizo a mensagem "Ops! Não existe nenhum usuário para ser exibido"
 
     Scenario: Atualizando dados do usuário
