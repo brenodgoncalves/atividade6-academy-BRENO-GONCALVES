@@ -9,7 +9,7 @@ Feature: Atualizar um usuário
     Scenario: Localizando usuário pelo email
         When pesquisei por um usuário pelo seu email
         |email |breno@teste.gov |
-        When acesso o detalhes do usuário pesquisado
+        And acesso o detalhes do usuário
         Then visualizo todas as suas informações
 
     Scenario: Usuário inexistente

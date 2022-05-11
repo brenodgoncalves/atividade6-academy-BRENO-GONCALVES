@@ -15,6 +15,10 @@ class PageDetalhes{
         cy.get(this.formularioEmail).type('{selectAll}'+email)
         cy.contains("[type='submit']","Salvar").click()
     }
+
+    clicarVoltar(){
+        cy.contains(".sc-gsnTZi","Voltar").click()
+    }
 }
 
 export var pageDetalhes = new PageDetalhes()

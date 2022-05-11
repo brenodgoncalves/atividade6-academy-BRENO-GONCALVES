@@ -1,5 +1,6 @@
 import{ pageUsers } from "../../support/pages/pageUsers.po"
 import{ pageUsersNovo } from "../../support/pages/pageUsersNovo.po"
+import{ pageDetalhes } from "../../support/pages/pageDetalhes.po"
 
 //Background: Acessar cadastro de novo usuário
 Given("acessei a aplicação", () =>{
@@ -16,9 +17,9 @@ When("incluo as informações de nome e email válidas do usuário", (tabela) =>
     pageUsersNovo.cadastroValido(dadosTabela.nome,dadosTabela.email)
 });
 
-Then("visualizo a mensagem {string}", (mensagem) =>{
+Then("visualizo mensagem {string}", (mensagem) =>{
     cy.contains(mensagem).should('be.visible')
-    cy.get(".sc-gsnTZi").click()
+    pageDetalhes.clicarVoltar()
 });
 
 //Scenario: Cadastro de um novo usuário em branco
@@ -32,7 +33,7 @@ Then("visualizo abaixo do campo nome a mensagem {string}", (mensagem) =>{
 
 And("visualizo abaixo do campo email a mensagem {string}", (mensagem) =>{
     cy.contains(mensagem).should('be.visible')
-    cy.get(".sc-gsnTZi").click()
+    pageDetalhes.clicarVoltar()
 });
 
 //Scenario: Cadastro de um novo usuário com email inválido
@@ -41,9 +42,9 @@ When("incluo as informações do usuário com email inválido", (tabela) =>{
     pageUsersNovo.cadastroValido(dadosTabela.nome,dadosTabela.email);
 });
 
-Then("visualizo a mensagem {string}", (mensagem) =>{
+Then("visualizo mensagem {string}", (mensagem) =>{
     cy.contains(mensagem).should('be.visible')
-    cy.get(".sc-gsnTZi").click()
+    pageDetalhes.clicarVoltar()
 });
 
 //Scenario: Cadastro de um usuário já existente
@@ -55,7 +56,7 @@ When("incluo as informações de um usuário já cadastrado", (tabela) =>{
 Then("visualizo um modal informando {string}", (mensagem) =>{
     cy.contains(mensagem).should('be.visible')
     cy.contains("Cancelar").click()
-    cy.get(".sc-dkzDqf").click()
+    pageDetalhes.clicarVoltar()
 });
 
 //Scenario: Cadastro de um novo usuário excedendo o numero de caracteres
@@ -70,5 +71,5 @@ Then("visualizo abaixo do campo nome a mensagem {string}", (mensagem) =>{
 
 And("visualizo abaixo do campo email {string}", (mensagem) =>{
     cy.contains(mensagem).should('be.visible')
-    cy.get(".sc-gsnTZi").click()
+    pageDetalhes.clicarVoltar()
 });

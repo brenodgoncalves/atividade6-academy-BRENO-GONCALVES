@@ -11,7 +11,7 @@ Feature: Listar usuário
         When incluo as informações de nome e email válidas do usuário
         |nome  |teste breno     |
         |email |breno@teste.gov |
-        Then visualizo a mensagem "Usuário salvo com sucesso" 
+        Then visualizo mensagem "Usuário salvo com sucesso" 
 
     Scenario: Cadastro de um novo usuário em branco
         When clico para salvar com os campos nome e email em branco
@@ -22,7 +22,7 @@ Feature: Listar usuário
         When incluo as informações do usuário com email inválido
         |nome  |teste breno    |
         |email |breno@testegov |
-        Then visualizo a mensagem "Formato de e-mail inválido"
+        Then visualizo mensagem "Formato de e-mail inválido"
 
     Scenario: Cadastro de um usuário já existente
         When incluo as informações de um usuário já cadastrado

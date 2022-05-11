@@ -12,22 +12,24 @@ When("pesquisei por um usuário pelo seu email", (tabela) =>{
     pageUsers.buscarUsuarioEmail(dadosTabela.email)
 });
 
-When("acesso o detalhes do usuário pesquisado", () =>{
+And("acesso o detalhes do usuário", () =>{
     pageUsers.acessoDetalhes()
 });
 
 Then("visualizo todas as suas informações", () =>{
     pageDetalhes.visualizarDetalhes()
+    pageDetalhes.clicarVoltar()
 });
 
 //Scenario: Usuário inexistente
-When(" pesquisei por um usuário pelo seu nome", (tabela) =>{
+When("pesquisei por um usuário pelo seu nome", (tabela) =>{
     var dadosTabela = tabela.rowsHash()
     pageUsers.buscarUsuarioEmail(dadosTabela.nome)
 });
 
 Then("visualizo a mensagem {string}", (mensagem) =>{
     cy.contains(mensagem).should('be.visible')
+    cy.get(".sc-iBkjds").should('be.visible').click()
 });
 
 //Atualizando dados do usuário
@@ -88,6 +90,7 @@ Then("visualizo um modal com a mensagem {string}", (mensagem) =>{
     cy.contains(mensagem).should('be.visible')
     cy.contains(".sc-iTONeN","Cancelar").click()
     cy.contains(".sc-iqcoie","Cancelar").click()
+    pageDetalhes.clicarVoltar()
 });
 
 //Scenario: Atualizando dados do usuário excedendo o numero de caracteres
@@ -112,4 +115,5 @@ Then("visualizo a mensagem abaixo do campo nome {string}", (mensagem) =>{
 Then("visualizo a mensagem abaixo do campo email {string}", (mensagem) =>{
     cy.contains(mensagem).should('be.visible')
     cy.contains(".sc-iqcoie","Cancelar").click()
+    pageDetalhes.clicarVoltar()
 });

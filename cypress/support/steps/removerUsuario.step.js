@@ -7,9 +7,9 @@ Given("acessei a aplicação", ()=>{
 });
 
 //Scenario: Removendo usuário
-When("pesquisei por um usuário pelo seu nome", (tabela) =>{
+When("pesquisei por um usuário pelo email", (tabela) =>{
     var dadosTabela = tabela.rowsHash()
-    pageUsers.buscarUsuarioEmail(dadosTabela.nome)
+    pageUsers.buscarUsuarioEmail(dadosTabela.email)
 });
 
 Then("removo o usuário pela opção de excluir", ()=>{
@@ -17,9 +17,9 @@ Then("removo o usuário pela opção de excluir", ()=>{
 });
 
 //Scenario: Usuário inexistente
-When("pesquisei por um usuário pelo email inexistente", (tabela) =>{
+When("pesquisei por um usuário pelo nome inexistente", (tabela) =>{
     var dadosTabela = tabela.rowsHash()
-    pageUsers.buscarUsuarioEmail(dadosTabela.email)
+    pageUsers.buscarUsuarioEmail(dadosTabela.nome)
 });
 
 Then("visualizo a mensagem {string}", (mensagem) =>{

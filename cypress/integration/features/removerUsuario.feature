@@ -7,11 +7,11 @@ Feature: Remover usuário
         Given acessei a aplicação
 
     Scenario: Removendo usuário
-        When pesquisei por um usuário pelo seu nome
-        |nome  |testando |
+        When pesquisei por um usuário pelo email
+        |email |teste@testando.gov.br |
         Then removo o usuário pela opção de excluir
 
     Scenario: Usuário inexistente
-        When pesquisei por um usuário pelo email inexistente
-        |email |teste@testando.gov.br |
+        When pesquisei por um usuário pelo nome inexistente
+        |nome |teste inexistente |
         Then visualizo a mensagem "Ops! Não existe nenhum usuário para ser exibido"
