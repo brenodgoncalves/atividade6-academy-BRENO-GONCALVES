@@ -26,8 +26,8 @@ Feature: Listar usuário
 
     Scenario: Cadastro de um usuário já existente
         When incluo as informações de um usuário já cadastrado
-        |nome  |teste breno     |
-        |email |breno@teste.gov |
+        |nome  |teste breno         |
+        |email |breno@existente.gov |
         Then visualizo um modal informando "Este e-mail já é utilizado por outro usuário" 
 
     Scenario: Cadastro de um novo usuário excedendo o numero de caracteres
@@ -35,4 +35,4 @@ Feature: Listar usuário
         |nome  |TesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTestee |
         |email |testetestetestetestetestetestetestetestetestetesteteste@teste.gov                                     |
         Then visualizo abaixo do campo nome a mensagem "Informe no máximo 100 caracteres para o nome"
-        And visualizo abaixo do campo email "Informe no máximo 60 caracteres para o e-mail"
+        And visualizo abaixo do campo email a mensagem "Informe no máximo 60 caracteres para o e-mail"

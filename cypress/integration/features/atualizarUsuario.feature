@@ -15,12 +15,12 @@ Feature: Atualizar um usuário
     Scenario: Usuário inexistente
         When pesquisei por um usuário pelo seu nome
         |nome  |teste breno inexistente |
-        Then visualizo a mensagem "Ops! Não existe nenhum usuário para ser exibido"
+        Then visualizo a mensagem informando "Ops! Não existe nenhum usuário para ser exibido"
 
     Scenario: Atualizando dados do usuário
         When pesquisei por um usuário pelo seu email
         |email |breno@teste.gov |
-        And acesso o detalhes do usuário pesquisado
+        And acesso o detalhes do usuário
         And alterei o nome e o email do usuário por um inexistente
         |nome  |testando              |
         |email |teste@testando.gov.br |
@@ -29,7 +29,7 @@ Feature: Atualizar um usuário
     Scenario: Atualizando dados do usuário com email inválido
         When pesquisei por um usuário pelo seu email
         |email |teste@testando.gov.br |
-        And acesso o detalhes do usuário pesquisado
+        And acesso o detalhes do usuário
         And alterei o email do usuário por um email invalido
         |email |teste@testando |
         Then visualizo a mensagem abaixo do campo email "Formato de e-mail inválido"
@@ -37,15 +37,15 @@ Feature: Atualizar um usuário
     Scenario: Atualizando dados do usuário para um email já existente
         When pesquisei por um usuário pelo seu email
         |email |teste@testando.gov.br |
-        And acesso o detalhes do usuário pesquisado
+        And acesso o detalhes do usuário
         And alterei o email do usuário por um email ja existente de outro usuário
-        |email |b@g.com |
+        |email |breno@existente.com |
         Then visualizo um modal com a mensagem "Este e-mail já é utilizado por outro usuário"
 
     Scenario: Atualizando dados do usuário excedendo o numero de caracteres
         When pesquisei por um usuário pelo seu email
         |email |teste@testando.gov.br |
-        And acesso o detalhes do usuário pesquisado
+        And acesso o detalhes do usuário
         And alterei o nome e o email do usuário excedendo o numero de caracteres permitidos
         |nome  |TesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTestee |
         |email |testetestetestetestetestetestetestetestetestetesteteste@teste.gov                                     |

@@ -1,9 +1,10 @@
 import{ pageUsers } from "../../support/pages/pageUsers.po"
+import{ pageUsersNovo } from "../../support/pages/pageUsersNovo.po"
 
 //Background: Acessar cadastro de novo usuário
 Given("acessei a aplicação", ()=>{
     pageUsers.visitar()
-    pageUsers.mocandoUsuarioExistente()
+    pageUsersNovo.mocandoDeleteUsuario()
 });
 
 //Scenario: Removendo usuário

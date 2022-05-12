@@ -6,53 +6,77 @@ class PageUsers{
     botaoRemover = ".sc-kgflAQ"
     
     visitar(){
-        cy.intercept("GET","https://crud-api-academy.herokuapp.com/api/v1/users",{
-            statusCode: 200,
-            fixtures: "usuarios.json"
-        });
-        cy.visit("https://academy-crud-frontend.herokuapp.com/");
+        cy.visit("https://academy-crud-frontend.herokuapp.com/")
     }
 
     buscarUsuarioEmail(email) {
-        cy.get(this.campoPesquisa).type(email);
+        cy.get(this.campoPesquisa).type(email)
     }
 
     buscarUsuarioNome(nome) {
-        cy.get(this.campoPesquisa).type(nome);
+        cy.get(this.campoPesquisa).type(nome)
     }
 
     cadastrarUsuarioNovo(){
-        cy.get(this.botaoNovo).click();
+        cy.get(this.botaoNovo).click()
     }
 
     listaUsuarios(){
-        cy.get(this.cardUsuarios).should('exist');
+        cy.get(this.cardUsuarios).should('exist')
     }
 
     acessoDetalhes(){
-        cy.get(this.botaoDetalhes).click();
+        cy.get(this.botaoDetalhes).click()
     }
 
     removendoUsuario(){
-        cy.get(this.botaoRemover).click();
-        cy.contains("Confirmar").click();
-        cy.contains("Usuário removido!").click();
+        cy.get(this.botaoRemover).click()
+        cy.contains("Confirmar").click()
+        cy.contains("Usuário removido!").click()
     }
 
     mocandoUsuarioExistente(){
-        cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users",
-        [{
-            id:"13f0e960-89ac-410c-bc76-defaa5875b3a",
-            name:"teste breno",
-            email:"breno@teste.gov",
-            createdAt:"2022-05-08T06:04:15.760Z",
-            updatedAt:"2022-05-08T06:04:15.760Z"
-        }]);
+        cy.intercept("GET","https://crud-api-academy.herokuapp.com/api/v1/users",{
+            statusCode: 200,
+            body: [{
+                id:"47e7ebaa-ad55-4ba6-94d0-256ac4a10c99",
+                name:"breno teste",
+                email:"breno@teste.gov",
+                createdAt:"2022-05-10T19:46:49.891Z",
+                updatedAt:"2022-05-10T21:43:49.457Z"
+            }]
+        });
     }
 
     mocandoUsuarioInexistente(){
         cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users",
         []);
+    }
+
+    mocandoUsuarioPesquisa(){
+        cy.intercept("GET","https://crud-api-academy.herokuapp.com/api/v1/search?value=breno@teste.gov",{
+            statusCode: 200,
+            body: [{
+                id:"47e7ebaa-ad55-4ba6-94d0-256ac4a10c99",
+                name:"breno teste",
+                email:"breno@teste.gov",
+                createdAt:"2022-05-10T19:46:49.891Z",
+                updatedAt:"2022-05-10T21:43:49.457Z"
+            }]
+        });
+    }
+    
+    mocandoUsuarioPesquisaAlterado(){
+        cy.intercept("GET","https://crud-api-academy.herokuapp.com/api/v1/search?value=teste@testando.gov.br",{
+            statusCode: 200,
+            body: [{
+                id:"47e7ebaa-ad55-4ba6-94d0-256ac4a10c99",
+                name:"testando",
+                email:"teste@testando.gov.br",
+                createdAt:"2022-05-10T19:46:49.891Z",
+                updatedAt:"2022-05-10T21:43:49.457Z"
+            }]
+        });
     }
 }
 

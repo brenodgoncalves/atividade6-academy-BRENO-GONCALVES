@@ -8,10 +8,10 @@ Feature: Remover usuário
 
     Scenario: Removendo usuário
         When pesquisei por um usuário pelo email
-        |email |teste@testando.gov.br |
+        |email |breno@teste.gov |
         Then removo o usuário pela opção de excluir
 
     Scenario: Usuário inexistente
         When pesquisei por um usuário pelo nome inexistente
-        |nome |teste inexistente |
+        |nome |teste breno inexistente |
         Then visualizo a mensagem "Ops! Não existe nenhum usuário para ser exibido"
