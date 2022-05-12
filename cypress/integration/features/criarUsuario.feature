@@ -1,4 +1,4 @@
-Feature: Listar usuário
+Feature: Registrar usuário
     Como uma pessoa qualquer
     Desejo registrar informações de usuário
     Para poder manipular estas informações livremente

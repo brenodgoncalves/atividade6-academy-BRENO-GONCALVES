@@ -1,6 +1,7 @@
 import{ pageUsers } from "../../support/pages/pageUsers.po"
 import{ pageUsersNovo } from "../../support/pages/pageUsersNovo.po"
 import{ pageDetalhes } from "../../support/pages/pageDetalhes.po"
+import{ mockando } from "../../support/pages/mocks.po"
 
 //Background: Acessar cadastro de novo usuário
 Given("acessei a aplicação", () =>{
@@ -14,7 +15,7 @@ And("acessei o cadastro de usuário", () =>{
 //Scenario: Cadastro de um novo usuário
 When("incluo as informações de nome e email válidas do usuário", (tabela) =>{
     var dadosTabela = tabela.rowsHash()
-    pageUsersNovo.mocandoCadastroUsuario()
+    mockando.mockandoCadastroUsuario()
     pageUsersNovo.cadastroValido(dadosTabela.nome,dadosTabela.email)
 });
 
@@ -46,7 +47,7 @@ When("incluo as informações do usuário com email inválido", (tabela) =>{
 //Scenario: Cadastro de um usuário já existente
 When("incluo as informações de um usuário já cadastrado", (tabela) =>{
     var dadosTabela = tabela.rowsHash()
-    pageUsersNovo.mocandoCadastroExistente()
+    mockando.mockandoCadastroExistente()
     pageUsersNovo.cadastroValido(dadosTabela.nome,dadosTabela.email)
 });
 

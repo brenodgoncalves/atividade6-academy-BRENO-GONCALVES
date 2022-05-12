@@ -1,10 +1,10 @@
 import{ pageUsers } from "../../support/pages/pageUsers.po"
-import{ pageUsersNovo } from "../../support/pages/pageUsersNovo.po"
+import{ mockando } from "../../support/pages/mocks.po"
 
 //Background: Acessar cadastro de novo usuário
 Given("acessei a aplicação", ()=>{
     pageUsers.visitar()
-    pageUsersNovo.mocandoDeleteUsuario()
+    mockando.mockandoDeleteUsuario()
 });
 
 //Scenario: Removendo usuário

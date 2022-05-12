@@ -1,13 +1,12 @@
 import{ pageUsers } from "../../support/pages/pageUsers.po"
 import{ pageDetalhes } from "../../support/pages/pageDetalhes.po"
-import{ pageUsersNovo } from "../../support/pages/pageUsersNovo.po"
+import{ mockando } from "../../support/pages/mocks.po"
 
 //Background: Acessar cadastro de novo usuário
 Given("acessei a aplicação", ()=>{
-    pageUsers.mocandoUsuarioPesquisa()
-    pageUsers.mocandoUsuarioPesquisaAlterado()
-    pageDetalhes.mocandoUsuarioDetalhes()
-    
+    mockando.mockandoUsuarioPesquisa()
+    mockando.mockandoUsuarioPesquisaAlterado()
+    mockando.mockandoUsuarioDetalhes()
     
     pageUsers.visitar()
 });
@@ -41,7 +40,7 @@ Then("visualizo a mensagem informando {string}", (mensagem) =>{
 //Atualizando dados do usuário
 And("alterei o nome e o email do usuário por um inexistente", (tabela) =>{
     var dadosTabela = tabela.rowsHash()
-    pageUsersNovo.mocandoUsuarioAtualizacao()
+    mockando.mockandoUsuarioAtualizacao()
     pageDetalhes.atualizarUsuario(dadosTabela.nome,dadosTabela.email)
 });
 
@@ -64,7 +63,7 @@ Then("visualizo a mensagem abaixo do campo email {string}", (mensagem) =>{
 //Scenario: Atualizando dados do usuário para um email já existente
 And("alterei o email do usuário por um email ja existente de outro usuário", (tabela) =>{
     var dadosTabela = tabela.rowsHash()
-    pageUsersNovo.mocandoUsuarioAtualizacaoExistente()
+    mockando.mockandoUsuarioAtualizacaoExistente()
     pageDetalhes.atualizarUsuario('',dadosTabela.email)
 });
 

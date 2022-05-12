@@ -1,6 +1,7 @@
 class PageUsers{
     campoPesquisa = ".sc-gKXOVf"
     botaoNovo = ".sc-gsnTZi"
+    listaDeUsuarios = "#listaUsuarios"
     cardUsuarios = "#userData"
     botaoDetalhes = "#userDataDetalhe"
     botaoRemover = ".sc-kgflAQ"
@@ -22,7 +23,12 @@ class PageUsers{
     }
 
     listaUsuarios(){
+        cy.get(this.listaDeUsuarios).should('exist')
         cy.get(this.cardUsuarios).should('exist')
+        cy.contains("p","Nome:").should('be.visible')
+        cy.contains("p","E-mail:").should('be.visible')
+        cy.get(this.botaoRemover).should('exist')
+        cy.get(this.botaoDetalhes).should('exist')
     }
 
     acessoDetalhes(){
@@ -33,50 +39,6 @@ class PageUsers{
         cy.get(this.botaoRemover).click()
         cy.contains("Confirmar").click()
         cy.contains("Usuário removido!").click()
-    }
-
-    mocandoUsuarioExistente(){
-        cy.intercept("GET","https://crud-api-academy.herokuapp.com/api/v1/users",{
-            statusCode: 200,
-            body: [{
-                id:"47e7ebaa-ad55-4ba6-94d0-256ac4a10c99",
-                name:"breno teste",
-                email:"breno@teste.gov",
-                createdAt:"2022-05-10T19:46:49.891Z",
-                updatedAt:"2022-05-10T21:43:49.457Z"
-            }]
-        });
-    }
-
-    mocandoUsuarioInexistente(){
-        cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users",
-        []);
-    }
-
-    mocandoUsuarioPesquisa(){
-        cy.intercept("GET","https://crud-api-academy.herokuapp.com/api/v1/search?value=breno@teste.gov",{
-            statusCode: 200,
-            body: [{
-                id:"47e7ebaa-ad55-4ba6-94d0-256ac4a10c99",
-                name:"breno teste",
-                email:"breno@teste.gov",
-                createdAt:"2022-05-10T19:46:49.891Z",
-                updatedAt:"2022-05-10T21:43:49.457Z"
-            }]
-        });
-    }
-    
-    mocandoUsuarioPesquisaAlterado(){
-        cy.intercept("GET","https://crud-api-academy.herokuapp.com/api/v1/search?value=teste@testando.gov.br",{
-            statusCode: 200,
-            body: [{
-                id:"47e7ebaa-ad55-4ba6-94d0-256ac4a10c99",
-                name:"testando",
-                email:"teste@testando.gov.br",
-                createdAt:"2022-05-10T19:46:49.891Z",
-                updatedAt:"2022-05-10T21:43:49.457Z"
-            }]
-        });
     }
 }
 
